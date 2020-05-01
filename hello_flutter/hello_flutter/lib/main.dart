@@ -1,61 +1,43 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
+void main() => runApp(MyFirstApp());
+
+class MyFirstApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.indigo,
         appBar: AppBar(
-          title: Text('My First App'),
+          title: Text('My first App'),
           centerTitle: true,
         ),
-        body: Row(
-          children: <Widget>[
-            Column(
+        body: Center(
+          child: Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Center(
-                  child: Text(
-                    'My 1',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
+                LinearProgressIndicator(
+                  value: 23,
+                ),
+                Text(
+                  '23%',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                Text(
+                  'Press button to dowload',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ],
             ),
-            Column(
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    'My 2',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    'My 3',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: null,
+          child: Icon(Icons.file_download),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
