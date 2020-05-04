@@ -6,28 +6,41 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Text("Компоновка виджетов"),
-        centerTitle: true,
-      ),
-      body: Container(
-         decoration: BoxDecoration(
-          color: Colors.indigo[100],
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Компоновка виджетов"),
+          centerTitle: true,
         ),
-        child: Column( //Row
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        body: Row(
           children: <Widget>[
-            Icon(Icons.battery_full, size: 50, color: Colors.red),
-            Icon(Icons.battery_full, size: 150, color: Colors.green),
-            Icon(Icons.battery_full, size: 50, color: Colors.yellow),
-            Icon(Icons.battery_full, size: 50, color: Colors.blue),
+            Expanded(
+              flex: 4,
+              child: Image.network('https://avatars.mds.yandex.net/get-pdb/2884572/a0387273-0bea-4d21-a7ca-18b6c22ea727/s1200?webp=false')
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(25),
+                color: Colors.lightBlueAccent,
+                child: Text('1'),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(25),
+                color: Colors.yellowAccent,
+                child: Text('2'),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(25),
+                color: Colors.redAccent,
+                child: Text('3'),
+              ),
+            ),
           ],
         ),
       ),
-    ));
+    );
   }
 }
