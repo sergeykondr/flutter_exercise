@@ -11,9 +11,10 @@ class MyApp extends StatelessWidget {
         title: Text("Компоновка виджетов"),
         centerTitle: true,
       ),
-      body: Padding(
-        //padding: EdgeInsets.all(35),
-        padding: EdgeInsets.only(left: 50, top: 40),
+      body: Align( //Center
+        //alignment: Alignment.topCenter,
+        //alignment: Alignment(0.5, 0.5),
+        alignment: Alignment.center,
         child: Text(
           'Hello Flutter!',
           style: TextStyle(fontSize: 32),
