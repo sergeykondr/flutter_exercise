@@ -12,18 +12,20 @@ class MyApp extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
-        decoration: BoxDecoration(
-          color: Colors.amber,
-          border: Border.all(),
+         decoration: BoxDecoration(
+          color: Colors.indigo[100],
         ),
-        width: 250,
-        height: 150,
-        padding: EdgeInsets.all(16),
-        margin: EdgeInsets.all(65),
-        alignment: Alignment.center ,
-        child: Text(
-          'Hello Flutter!',
-          style: TextStyle(fontSize: 32),
+        child: Column( //Row
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Icon(Icons.battery_full, size: 50, color: Colors.red),
+            Icon(Icons.battery_full, size: 150, color: Colors.green),
+            Icon(Icons.battery_full, size: 50, color: Colors.yellow),
+            Icon(Icons.battery_full, size: 50, color: Colors.blue),
+          ],
         ),
       ),
     ));
