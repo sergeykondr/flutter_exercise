@@ -4,11 +4,12 @@ import 'package:http/http.dart' as http;
 class OfficesList {
   List<Office> offices;
 
-  OfficesList({this.offices});
+    OfficesList({this.offices});
 
   factory OfficesList.fromJson (Map<String, dynamic> json) {
     var officesJson = json['offices'] as List; 
     List<Office> officesList = officesJson.map((i) => Office.fromJson(i)).toList();
+    
 
     return OfficesList(
       offices: officesList,
