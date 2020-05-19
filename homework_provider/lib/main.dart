@@ -39,9 +39,9 @@ class MyApp extends StatelessWidget {
                 height: 200,
               ),
               Switch(
-                value: _state._valueCheked,
-                onChanged: (isCheked) {
-                  _state.rndColor(isCheked);
+                value: _state._valueChecked,
+                onChanged: (isChecked) {
+                  _state.rndColor(isChecked);
                 },
               )
             ],
@@ -53,11 +53,11 @@ class MyApp extends StatelessWidget {
 }
 
 class ColorChangeNotifier extends ChangeNotifier {
-  bool _valueCheked = false;
+  bool _valueChecked = false;
   Color _color = Colors.green;
 
-  void rndColor(isChaked) {
-    _valueCheked = isChaked;
+  void rndColor(isChecked) {
+    _valueChecked = isChecked;
     _color = Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
     notifyListeners();
   }
