@@ -30,7 +30,7 @@ class DBProvider {
 
   void _createDB(Database db, int version) async {
     await db.execute(
-      'CREATE TABLE $studentsTable($columnId INTERGER PRIMARY KEY AUTOINCREMENT, $columnName TEXT)',
+      'CREATE TABLE $studentsTable($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnName TEXT)',
     );
   }
 
@@ -48,11 +48,10 @@ class DBProvider {
   }
 
   //INSERT
-  Future<Student> insertStudent(Student student) async {
+  Future<int> insertStudent(Student student) async {
     Database db = await this.database;
-    student.id =
-        await db.insert(this.studentsTable, student.toMap()); //????????????
-    return student;
+    
+    return await db.insert(this.studentsTable, student.toMap()); //????????????;
   }
 
   //UPDATE

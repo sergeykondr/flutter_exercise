@@ -41,7 +41,6 @@ updateStudentList() {
   setState(() {
     _studentsList = DBProvider.db.getStudents();
   });
-
 }
 
  @override
@@ -147,7 +146,7 @@ updateStudentList() {
             ],
           ),
           const Divider(
-            height: 5.0,
+            height:45.0,
           ),
           Expanded(
             child: FutureBuilder(
