@@ -29,18 +29,19 @@ class DBProvider {
   }
 
   void _createDB(Database db, int version) async {
-      await db.execute(
-        'CREATE TABLE $studentsTable($columnId INTERGER PRIMARY KEY AUTOINCREMENT, $columnName TEXT)',
-      );
+    await db.execute(
+      'CREATE TABLE $studentsTable($columnId INTERGER PRIMARY KEY AUTOINCREMENT, $columnName TEXT)',
+    );
   }
 
   //READ
-  Future <List<Student>> getStudents() async {
+  Future<List<Student>> getStudents() async {
     Database db = await this.database;
-    final List<Map<String, dynamic>> studentsMapList = await db.query(studentsTable);
+    final List<Map<String, dynamic>> studentsMapList =
+        await db.query(studentsTable);
     final List<Student> studentsList = [];
     studentsMapList.forEach((studentMap) {
-      studentsList.add(Student.fromMap(studentMap));      
+      studentsList.add(Student.fromMap(studentMap));
     });
 
     return studentsList;
@@ -49,12 +50,25 @@ class DBProvider {
   //INSERT
   Future<Student> insertStudent(Student student) async {
     Database db = await this.database;
-    student.id = await db.insert(this.studentsTable, student.toMap());
+    student.id =
+        await db.insert(this.studentsTable, student.toMap()); //????????????
     return student;
   }
 
   //UPDATE
-  
+  Future<int> updateStudent(Student student) async {
+    Database db = await this.database;
+    return await db.update(
+      this.studentsTable,
+      student.toMap(),
+      where: '$columnId = ?',
+      whereArgs: [student.id],
+    );
+  }
 
+  Future<int> deleteStudent(int id) async {
+    Database db = await this.database;
+    return await db.delete(this.studentsTable, where: '$columnId = ?', whereArgs: [id]);
+  }
 
 }
