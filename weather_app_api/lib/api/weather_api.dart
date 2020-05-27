@@ -19,6 +19,7 @@ class WeatherApi {
       'units': 'metric',
       'q': cityName
       };
+      parameters = queryParameters;
     } else {
       var queryParameters = {
       'APPID': Constants.WEATHER_APP_ID,
@@ -26,9 +27,10 @@ class WeatherApi {
       'lat': location.latitude.toString(),
       'lon': location.longitude.toString()
       };
+      parameters = queryParameters;
     }
 
-    var uri = Uri.https(Constants.WEATHER_BASE_URL_DOMAIN, Constants.WEATHER_FORECAST_PATH, queryParameters);
+    var uri = Uri.https(Constants.WEATHER_BASE_URL_DOMAIN, Constants.WEATHER_FORECAST_PATH, parameters);
     log('request: ${uri.toString()}');
     var response = await http.get(uri);
 

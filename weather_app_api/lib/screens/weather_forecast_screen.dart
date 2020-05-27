@@ -26,7 +26,7 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
     super.initState();
 
     if (widget.locationWeather != null) {
-      forecastObject = WeatherApi().fetchWeatherForecast()
+      forecastObject = WeatherApi().fetchWeatherForecast();
     }
     //forecastObject = WeatherApi().fetchWeatherForecastWithCity(cityName: _cityname);
     // forecastObject.then((value) {
