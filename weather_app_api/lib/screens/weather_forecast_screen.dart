@@ -61,7 +61,8 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                 if (tappedName != null) {
                   _cityname = tappedName;
                   setState(() {
-                    forecastObject = WeatherApi().fetchWeatherForecast(cityName: _cityname, isCity: true);
+                    forecastObject = WeatherApi().fetchWeatherForecast(
+                        cityName: _cityname, isCity: true);
                   });
                 }
               })
@@ -97,9 +98,7 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                   } else {
                     return Center(
                         child: SpinKitThreeBounce(
-                      color: Colors.black87,
-                      size: 100,
-                    ));
+                            color: Colors.black87, size: 100));
                   }
                 }),
           )
