@@ -1,3 +1,4 @@
+import 'package:bloc_stream_example/color_bloc.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +11,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-    
       home: MyHomePage(),
     );
   }
@@ -22,6 +22,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  ColorBloc _bloc = ColorBloc();
+
+  @override
+  void dispose() {
+    _bloc.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,26 +38,28 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
       ),
       body: Center(
-        child: AnimatedContainer(
-          height: 100,
-          width: 100,
-          color: Colors.red,
-          duration:  Duration(milliseconds: 500),
-        ),
+        child: StreamBuilder(
+            stream: _bloc.outputStateStream,
+            initialData: Colors.red,
+            builder: (context, snapshot) {
+              return AnimatedContainer(
+                height: 100,
+                width: 100,
+                color: snapshot.data,
+                duration: Duration(milliseconds: 500),
+              );
+            }),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          FloatingActionButton(
-            backgroundColor: Colors.red,
-            onPressed: (){}
-          ),
+          FloatingActionButton(backgroundColor: Colors.red, onPressed: () {
+            _bloc.inputEventSink.add(ColorEvent.event_red);
+          }),
           SizedBox(width: 10),
-          FloatingActionButton(
-            backgroundColor: Colors.green,
-            onPressed: (){}
-          ),
-          
+          FloatingActionButton(backgroundColor: Colors.green, onPressed: () {
+            _bloc.inputEventSink.add(ColorEvent.event_green);
+          }),
         ],
       ),
     );
