@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 enum ColorEvent {event_red, event_green}
 
+//ColocBloc  будет принимать ColorEvent в качестве входного и выходного типа Color
 class ColorBloc extends Bloc<ColorEvent, Color> {
   Color _color = Colors.red;
 
