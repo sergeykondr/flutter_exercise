@@ -12,7 +12,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: BlocProvider(                 //!!! BlocProvider - виджет, который предоставляет bloc дочерним элементам
+      home: BlocProvider(                
+        //!!! BlocProvider - виджет,
+        //который предоставляет bloc дочерним элементам через  BlocProvider.of<T>(context).
+        //может быть предоставлен нескольким виджетам в поддереве.
         create: (context) => ColorBloc(),
         child: MyHomePage(),
       ),
@@ -31,7 +34,10 @@ class MyHomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: BlocBuilder<ColorBloc, Color>( //!!! переписовка контента
+        //на вход: блок ColorBloc. на выход Сolor
+        child: BlocBuilder<ColorBloc, Color>(
+          //!!! переписовка контента в ответ на новые состояния
+          // bloc - необязательный параметр. для чего???
           builder: (context, currentColor) => AnimatedContainer(   //currentColor !!!!!
             height: 100,
             width: 100,

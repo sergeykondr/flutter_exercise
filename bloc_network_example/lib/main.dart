@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_api/screens/location_screen.dart';
-//import 'package:weather_app_api/screens/weather_forecast_screen.dart';
+
+import 'pages/home_page.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LocationScreen(),
+      home: HomePage(),
     );
   }
 }
