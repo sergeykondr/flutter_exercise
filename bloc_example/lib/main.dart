@@ -24,6 +24,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  // при использовании flutter_bloc нам не нужно закрывать потоки(в отличие от bloc) и поэтому мы используем StatelessWidget.
+  //Данная библиотека делает это автоматически
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
