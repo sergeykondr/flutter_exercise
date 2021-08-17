@@ -9,12 +9,13 @@ class ColorBloc extends Bloc<ColorEvent, Color> {
 
   @override
   Color get initialState => Colors.red;
-
+  
   @override
   Stream<Color> mapEventToState(ColorEvent event) async* {
     //бизнес логика приложения
     _color = (event == ColorEvent.event_red) ? Colors.red : Colors.green;
     yield _color; // добавляем значение в выходной поток
   }
+
   
 }

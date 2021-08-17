@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         //!!! BlocProvider - виджет,
         //который предоставляет bloc дочерним элементам через  BlocProvider.of<T>(context).
         //может быть предоставлен нескольким виджетам в поддереве.
-        create: (context) => ColorBloc(),
+        create: (context) => ColorBloc(), //!!! метод  create  
         child: MyHomePage(),
       ),
     );
@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    ColorBloc _bloc = BlocProvider.of<ColorBloc>(context);  //!!!
+    ColorBloc _bloc = BlocProvider.of<ColorBloc>(context);  //!!! <тип>
     return Scaffold(
       appBar: AppBar(
         title: Text('BLoC with flutter_bloc'),
@@ -55,6 +55,7 @@ class MyHomePage extends StatelessWidget {
             backgroundColor: Colors.red,
             onPressed: () {
               _bloc.add(ColorEvent.event_red);          //!!!
+
             },
           ),
           SizedBox(width: 10),

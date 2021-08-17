@@ -64,10 +64,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
+        title:  Text('BottomNavigationBar Sample $_selectedIndex'),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _widgetOptions.elementAt(_selectedIndex), //_widgetOptions[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,  
